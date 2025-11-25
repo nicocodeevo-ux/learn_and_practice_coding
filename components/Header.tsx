@@ -20,26 +20,29 @@ const BrainCircuitIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   </svg>
 );
 
-
-interface HeaderProps {
-  onToggleInterview?: () => void;
-  interviewActive?: boolean;
-}
-
-export const Header: React.FC<HeaderProps> = ({ onToggleInterview, interviewActive = false }) => {
+export const Header: React.FC = () => {
   return (
-    <header className="py-6 bg-primary/80 backdrop-blur-sm border-b border-secondary">
-      <div className="container mx-auto px-4 flex items-center justify-between">
-        <div className="flex items-center">
-          <BrainCircuitIcon className="h-8 w-8 text-accent mr-3" />
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-100">
-            Virtual Programming Teacher
-          </h1>
-        </div>
-        <div>
-          <button onClick={onToggleInterview} className={`px-3 py-2 rounded ${interviewActive ? 'bg-accent text-primary' : 'bg-slate-700 text-slate-200'}`}>
-            {interviewActive ? 'Close Interview' : 'Open Interview'}
-          </button>
+    <header className="relative py-6 bg-slate-900/80 backdrop-blur-xl border-b border-orange-500/20 shadow-lg shadow-orange-500/5 z-20">
+      {/* Warm orange glow overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 via-amber-500/5 to-orange-500/5"></div>
+
+      <div className="container mx-auto px-4 flex items-center justify-center relative">
+        <div className="flex items-center gap-4">
+          {/* Glowing logo with orange accent */}
+          <div className="relative group/logo">
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl blur-lg opacity-40 group-hover/logo:opacity-60 transition-opacity duration-500"></div>
+            <div className="relative p-2 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-lg shadow-orange-500/30 group-hover/logo:scale-105 transition-all duration-500 border border-orange-400/30">
+              <BrainCircuitIcon className="h-8 w-8 text-white" />
+            </div>
+          </div>
+
+          {/* Title with warm gradient */}
+          <div>
+            <h1 className="text-3xl md:text-4xl font-bold tracking-tight bg-gradient-to-r from-orange-400 via-amber-400 to-orange-300 bg-clip-text text-transparent">
+              Learn and Practice Coding
+            </h1>
+            <p className="text-xs md:text-sm text-slate-400 mt-0.5">Learn comfortably in a relaxed, focused environment</p>
+          </div>
         </div>
       </div>
     </header>
